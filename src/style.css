@@ -1,0 +1,28 @@
+body {
+	background: rgb(10, 59, 124);
+	color: white;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: auto;
+	transform: rotate(-3deg);
+}
+
+p {
+	margin: 0;
+	height: 1em;
+	line-height: 1em;
+	font-family: bebas-neue, sans-serif;
+	font-size: 8em;
+	text-transform: uppercase;
+	overflow: hidden;
+}
+
+em {
+	background: #e21e26;
+	font-style: normal;
+	padding: 0 0.1em;
+}
