@@ -2,15 +2,17 @@
   "name": "getwhatdone",
   "version": "1.0.0",
   "description": "",
-  "main": "src/job.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
     "job": "node src/job.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "noun-json": "^1.0.1",
     "puppeteer": "^2.0.0",
     "twitter": "^1.7.1"
