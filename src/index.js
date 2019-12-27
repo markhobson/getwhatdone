@@ -9,7 +9,7 @@ async function createImage(noun) {
 	const pagePath = path.join(__dirname, 'index.html');
 	const imagePath = 'screenshot.png';
 
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({args: ['--no-sandbox']});
 	const page = await browser.newPage();
 	await page.setViewport({width: 1280, height: 720});
 	await page.goto(`file:${pagePath}`, {waitUntil: 'networkidle0'});
