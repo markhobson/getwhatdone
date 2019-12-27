@@ -1,8 +1,8 @@
 require('dotenv').config();
-const path = require('path');
 const fs = require('fs');
-const nouns = require('noun-json');
+const path = require('path');
 const puppeteer = require('puppeteer');
+const nouns = require('noun-json');
 const Twitter = require('twitter');
 
 async function createImage(noun) {
