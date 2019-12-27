@@ -34,6 +34,13 @@ async function tweet(status, mediaPath) {
 
 (async () => {
 	const noun = nouns[Math.floor(Math.random() * nouns.length)];
-	const imagePath = await createImage(noun);
-	await tweet(`Get ${noun} done`, imagePath);
+	
+	try {
+		const imagePath = await createImage(noun);
+		await tweet(`Get ${noun} done`, imagePath);
+		console.log('Get job done');
+	}
+	catch (error) {
+		console.error(error);
+	}
 })();
