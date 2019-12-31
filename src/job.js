@@ -12,7 +12,7 @@ async function createImage(noun) {
 	const browser = await puppeteer.launch({args: ['--no-sandbox']});
 	const page = await browser.newPage();
 	await page.setViewport({width: 1280, height: 720});
-	await page.goto(`file:${pagePath}`, {waitUntil: 'networkidle0'});
+	await page.goto(`file:${pagePath}`, {waitUntil: 'load'});
 	await page.$eval('#noun', (element, text) => element.innerHTML = text, noun);
 	await page.screenshot({path: imagePath});
 	await browser.close();
