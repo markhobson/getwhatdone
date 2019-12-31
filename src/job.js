@@ -36,7 +36,7 @@ async function tweet(status, mediaPath) {
 	try {
 		await createImage(noun, imagePath);
 		await tweet(`Get ${noun} done`, imagePath);
-		console.log('Get job done');
+		console.log(`Get ${noun} done`);
 	}
 	catch (error) {
 		console.error(error);
