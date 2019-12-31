@@ -5,9 +5,8 @@ const puppeteer = require('puppeteer');
 const nouns = require('noun-json');
 const Twitter = require('twitter');
 
-async function createImage(noun) {
+async function createImage(noun, imagePath) {
 	const pagePath = path.join(__dirname, 'index.html');
-	const imagePath = 'screenshot.png';
 
 	const browser = await puppeteer.launch({args: ['--no-sandbox']});
 	const page = await browser.newPage();
@@ -16,8 +15,6 @@ async function createImage(noun) {
 	await page.$eval('#noun', (element, text) => element.innerHTML = text, noun);
 	await page.screenshot({path: imagePath});
 	await browser.close();
-	
-	return imagePath;
 }
 
 async function tweet(status, mediaPath) {
@@ -34,9 +31,10 @@ async function tweet(status, mediaPath) {
 
 (async () => {
 	const noun = nouns[Math.floor(Math.random() * nouns.length)];
+	const imagePath = 'screenshot.png';
 	
 	try {
-		const imagePath = await createImage(noun);
+		await createImage(noun, imagePath);
 		await tweet(`Get ${noun} done`, imagePath);
 		console.log('Get job done');
 	}
