@@ -12,6 +12,7 @@ async function createImage(noun, imagePath) {
 	const page = await browser.newPage();
 	await page.setViewport({width: 1280, height: 720});
 	await page.goto(`file:${pagePath}`, {waitUntil: 'load'});
+	await page.waitForFunction('document.fonts.ready');
 	await page.$eval('#noun', (element, text) => element.innerHTML = text, noun);
 	await page.screenshot({path: imagePath});
 	await browser.close();
