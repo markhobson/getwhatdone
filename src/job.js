@@ -10,6 +10,7 @@ async function createImage(noun, imagePath) {
 
 	const browser = await puppeteer.launch({args: ['--no-sandbox']});
 	const page = await browser.newPage();
+	page.on('console', msg => console.log(`[pptr] ${msg.text()}`));
 	await page.setViewport({width: 1280, height: 720});
 	await page.goto(`file:${pagePath}`, {waitUntil: 'load'});
 	await page.waitForFunction('document.fonts.ready');
