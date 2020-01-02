@@ -5,11 +5,11 @@ const puppeteer = require('puppeteer');
 const nouns = require('noun-json');
 const Twitter = require('twitter');
 
-async function createImage(pagePath, pageModifier, imagePath) {
+async function createImage(pagePath, width, height, pageModifier, imagePath) {
 	const browser = await puppeteer.launch({args: ['--no-sandbox']});
 	const page = await browser.newPage();
 	page.on('console', msg => console.log(`[pptr] ${msg.text()}`));
-	await page.setViewport({width: 1280, height: 720});
+	await page.setViewport({width, height});
 	await page.goto(`file:${pagePath}`, {waitUntil: 'load'});
 	await page.waitForFunction('document.fonts.ready');
 	await pageModifier(page);
@@ -40,7 +40,7 @@ async function tweet(status, mediaPath) {
 	const imagePath = 'screenshot.png';
 	
 	try {
-		await createImage(pagePath, await setNoun(noun), imagePath);
+		await createImage(pagePath, 1280, 720, await setNoun(noun), imagePath);
 		await tweet(`Get ${noun} done`, imagePath);
 		console.log(`Get ${noun} done`);
 	}
