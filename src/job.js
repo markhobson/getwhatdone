@@ -5,9 +5,7 @@ const puppeteer = require('puppeteer');
 const nouns = require('noun-json');
 const Twitter = require('twitter');
 
-async function createImage(noun, imagePath) {
-	const pagePath = path.join(__dirname, 'index.html');
-
+async function createImage(pagePath, noun, imagePath) {
 	const browser = await puppeteer.launch({args: ['--no-sandbox']});
 	const page = await browser.newPage();
 	page.on('console', msg => console.log(`[pptr] ${msg.text()}`));
@@ -32,11 +30,12 @@ async function tweet(status, mediaPath) {
 }
 
 (async () => {
+	const pagePath = path.join(__dirname, 'index.html');
 	const noun = nouns[Math.floor(Math.random() * nouns.length)];
 	const imagePath = 'screenshot.png';
 	
 	try {
-		await createImage(noun, imagePath);
+		await createImage(pagePath, noun, imagePath);
 		await tweet(`Get ${noun} done`, imagePath);
 		console.log(`Get ${noun} done`);
 	}
