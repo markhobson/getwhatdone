@@ -23,6 +23,7 @@ p {
 	font-family: bebas-neue, sans-serif;
 	font-size: 14.5em;
 	text-transform: uppercase;
+	white-space: nowrap;
 	overflow: hidden;
 }
 
