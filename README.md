@@ -58,3 +58,23 @@ Then visit http://localhost:3000/.
    heroku addons:open scheduler
    ```
    Add job to run `npm run job` every hour
+
+## Listing tweets
+
+To list all previous tweets:
+
+```
+npm run list
+```
+
+Example output:
+
+```
+Id                  | Created At               | Text
+--------------------+--------------------------+---------------------------------
+1210271071955570688 | 2019-12-26T18:48:03.000Z | Get earthworm done https://t.co/wg1Eg9FCAP
+1210263078572580865 | 2019-12-26T18:16:18.000Z | Get gather done https://t.co/2UCVPP0RAV
+1210262953158758400 | 2019-12-26T18:15:48.000Z | Get brother done https://t.co/k9unIt5Hk6
+```
+
+The `Id` can then be used to obtain the tweet URL.
