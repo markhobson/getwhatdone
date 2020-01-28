@@ -22,13 +22,17 @@ async function setNoun(noun) {
 		await page.$eval('#noun', (element, text) => element.innerHTML = text, noun);
 }
 
-async function tweet(status, mediaPath) {
-	const client = new Twitter({
+function createClient() {
+	return new Twitter({
 		consumer_key: process.env.TWITTER_CONSUMER_KEY,
 		consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
 		access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
 		access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 	});
+}
+
+async function tweet(status, mediaPath) {
+	const client = createClient();
 	const mediaData = fs.readFileSync(mediaPath);
 	const media = await client.post('media/upload', {media: mediaData});
 	await client.post('statuses/update', {status: status, media_ids: media.media_id_string});
