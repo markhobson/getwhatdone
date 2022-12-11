@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "noun-json": "^1.0.1",
     "puppeteer": "^2.0.0",
     "twitter": "^1.7.1"
